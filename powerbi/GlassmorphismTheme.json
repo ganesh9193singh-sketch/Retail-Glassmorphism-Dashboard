@@ -1,0 +1,30 @@
+{
+  "name": "Glassmorphism Command Center",
+  "dataColors": ["#06B6D4", "#10B981", "#8B5CF6", "#F43F5E", "#22D3EE", "#34D399", "#A78BFA", "#FB7185"],
+  "background": "#0F172A",
+  "foreground": "#F8FAFC",
+  "tableAccent": "#06B6D4",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#FFFFFF0D"}}, "transparency": 95}],
+        "border": [{"color": {"solid": {"color": "#FFFFFF1A"}}, "show": true, "transparency": 90}],
+        "title": [{"color": {"solid": {"color": "#F8FAFC"}}, "fontFamily": "Inter", "fontSize": 12, "bold": true}],
+        "labels": [{"color": {"solid": {"color": "#94A3B8"}}, "fontFamily": "Inter"}]
+      }
+    },
+    "card": {
+      "*": {
+        "background": [{"show": true}],
+        "border": [{"show": true}],
+        "labels": [{"color": {"solid": {"color": "#94A3B8"}}}]
+      }
+    }
+  },
+  "textClasses": {
+    "label": {"color": "#94A3B8", "fontFace": "Inter"},
+    "callout": {"color": "#F8FAFC", "fontFace": "Inter", "fontSize": 24},
+    "title": {"color": "#F8FAFC", "fontFace": "Inter"},
+    "header": {"color": "#F8FAFC", "fontFace": "Inter"}
+  }
+}
