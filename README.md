@@ -4,9 +4,7 @@ A modern, dark-mode retail analytics dashboard designed to help people understan
 
 ## Open the project
 
-- **Live dashboard:** https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/
 - **GitHub repository:** https://github.com/ganesh9193singh-sketch/Retail-Glassmorphism-Dashboard
-- **Main dashboard file:** [index.html](./index.html)
 
 > The published website displays the dashboard version currently committed as index.html. Treat figures as demo analytics unless the supplied data files are connected and verified.
 
