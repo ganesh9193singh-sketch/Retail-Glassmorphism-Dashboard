@@ -1,60 +1,74 @@
-# Power BI Guide — Beginner Friendly
+# Power BI Starter Guide
 
-This folder contains starter files to help you build a report in Microsoft Power BI. It does **not** contain a finished Power BI report yet.
+This folder contains starter resources for creating a retail analytics report in Microsoft Power BI. **It does not contain a finished Power BI `.pbix` report or a published Power BI report URL.**
 
-## Start here
+## Project links
 
-- **[Open the separate HTML dashboard demo](https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/)**
-- **[View the dashboard's HTML source code](../index.html)**
-- **[Open the Power BI embed HTML template](./embed-template.html)**
+- **Live HTML dashboard:** https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/
+- **Main dashboard HTML source:** [Retail-Glassmorphism-Command-Center (1).html](../Retail-Glassmorphism-Command-Center%20(1).html)
+- **Website entry point:** [index.html](../index.html)
+- **Power BI embed template:** [embed-template.html](./embed-template.html)
+- **Main project README:** [README.md](../README.md)
 
-The HTML dashboard is a working-style web demo. It is not itself a Power BI report, and an HTML link cannot automatically turn into a Power BI report.
+The HTML dashboard and a Power BI report are separate deliverables. Publishing the HTML website does not create or publish a Power BI report.
 
 ## Files in this folder
 
 ### `GlassmorphismTheme.json`
-A theme is like a design preset. It gives charts and report pages a consistent color style, including a dark background and bright accent colors.
 
-**How to apply it**
+A Power BI theme file that sets a consistent visual style for report pages and visuals.
+
+**Import the theme**
 1. Open Power BI Desktop.
-2. Open the **View** tab.
-3. Choose **Themes → Browse for themes**.
-4. Select `GlassmorphismTheme.json`.
+2. Select **View → Themes → Browse for themes**.
+3. Choose `GlassmorphismTheme.json`.
+
+Review the result in Power BI and adjust colors or formatting as needed.
 
 ### `DAX_Measures.txt`
-This file contains example formulas. In Power BI, formulas are called DAX measures. They calculate values such as delivered sales, profit, delivered orders, and average order value.
 
-**How to use the formulas**
-1. Import your data into Power BI.
-2. Confirm that your table and column names match the formulas.
-3. Create a measure from the **Modeling → New measure** option.
-4. Copy one formula at a time and adjust it to match your data.
-5. Check the results against a manual calculation before trusting the report.
+A collection of example DAX measure notes. Treat them as starter formulas, not validated financial definitions.
 
-## Data needed
+**Use the formulas**
+1. Import your own dataset into Power BI.
+2. Check that table and column names match the formulas.
+3. Create each measure using **Modeling → New measure**.
+4. Adjust the formula for your data model and order-status rules.
+5. Compare the results with manual calculations and trusted source totals.
 
-A typical version of this project needs three tables:
-- **Customers:** one row per customer, including a customer ID and region.
-- **Orders:** one row per order, including customer ID, product ID, date, sales, profit, and order status.
-- **Products:** one row per product, including a product ID and product name/category.
+### `embed-template.html`
 
-Connect the tables using the matching IDs. The CSV files are not currently included in this repository, so you will need to add the correct source data before building the full report.
+A basic HTML template for displaying a Power BI report after you have a valid report embed URL and the correct permissions. It is not a report and will not work with a placeholder URL.
 
-## How to make a real Power BI report link
+## Data requirements
+
+The precise schema depends on your source data and the measures you choose. A typical retail model may include:
+
+- **Orders:** order ID, date, customer ID, product ID, quantity, sales amount, cost/profit fields, and order status.
+- **Customers:** customer ID and appropriate customer attributes, such as region.
+- **Products:** product ID, product name, and category.
+
+Use stable IDs to define relationships. Confirm data types, duplicate keys, missing values, currency, date ranges, and order-status definitions before building visuals.
+
+**Data availability:** There are no dedicated CSV data files listed in this repository at present. Add or connect the appropriate source data before expecting a populated Power BI report.
+
+## Create and embed a Power BI report
 
 1. Open Power BI Desktop and import your data.
-2. Apply the theme and create charts and measures.
+2. Build and validate your data model, relationships, measures, and visuals.
 3. Save the report as a `.pbix` file.
-4. Publish it to Power BI Service, if your account supports publishing.
-5. Use the report's supported sharing/embed option and check access permissions.
-6. If you want to display it inside a webpage, copy the authorized embed URL into `embed-template.html`, replacing `REPLACE_WITH_YOUR_POWER_BI_EMBED_URL`.
+4. Publish it to Power BI Service if your account and organization allow it.
+5. Choose an appropriate sharing or embed method and confirm the access permissions.
+6. Replace `REPLACE_WITH_YOUR_POWER_BI_EMBED_URL` in `embed-template.html` with the authorized embed URL, if that template suits your use case.
+7. Test the page while signed in and, where relevant, with a viewer account that has the intended permissions.
 
-**Important:** This repository does not currently contain a finished `.pbix` report or a real Power BI Service report link. The template cannot show a Power BI report until you publish one and insert its real embed URL. Avoid public embedding for private or sensitive data.
+Do not publicly embed private, confidential, or personal data. Public publishing can make report data accessible to anyone with the link or through the public web.
 
-## HTML dashboard versus Power BI
+## Validate before presenting results
 
-- **HTML dashboard demo:** [Open the web dashboard](https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/)
-- **HTML code:** [Open `index.html`](../index.html)
-- **Power BI embed template:** [Open `embed-template.html`](./embed-template.html)
+- Confirm the source and refresh date.
+- Document how sales, profit, delivered orders, returns, cancellations, and AOV are calculated.
+- Check totals against the original records.
+- Verify access permissions for any published report.
+- Clearly label sample or illustrative data.
 
-These are two separate outputs. The website can be published using GitHub Pages. A Power BI report must be created and published separately in Power BI.
