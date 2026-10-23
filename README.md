@@ -1,84 +1,132 @@
 # Retail Glassmorphism Command Center
 
-A modern, dark-mode retail analytics dashboard designed to help people understand sales performance, profitability, customer activity, and order issues at a glance. It uses a glassmorphism visual style: translucent panels, soft borders, and bright accent colors.
+A browser-based retail analytics dashboard with a dark glassmorphism interface. The project is designed to present retail KPIs and exploratory views for sales, profit, orders, products, customers, regions, and sales channels.
 
-## Open the project
+> **Important:** This is a demonstration/learning project. Do not treat displayed figures as verified business results unless you validate the underlying data and calculations.
 
-- **Live dashboard (GitHub Pages):** https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/
+## Open the dashboard
+
+- **Live website:** https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/
+- **Dashboard HTML source:** [Retail-Glassmorphism-Command-Center (1).html](./Retail-Glassmorphism-Command-Center%20(1).html)
 - **GitHub repository:** https://github.com/ganesh9193singh-sketch/Retail-Glassmorphism-Dashboard
+- **Deployment workflow:** [deploy.yml](./.github/workflows/deploy.yml)
 
-> If the live dashboard does not load yet, the published site needs the actual dashboard HTML file committed to the repository and the GitHub Pages deployment to finish. The published website displays the version currently committed as index.html. Treat figures as demo analytics unless the supplied data files are connected and verified.
+If the live site does not update immediately after a commit, check the repository's **Actions** tab for the GitHub Pages deployment and wait for it to finish. Then refresh the site, or try a hard refresh.
 
-## What the dashboard is for
+## Project overview
 
-Retail businesses can use a dashboard like this to monitor:
-- **Sales:** revenue generated over time.
-- **Profit:** what remains after the costs represented in the dataset.
-- **Order leakage:** the share of orders returned or cancelled instead of successfully delivered.
-- **Average order value (AOV):** average sales value per delivered order.
-- **Regions and channels:** how performance differs across regions, payment methods, and sales channels.
-- **Products and customers:** which categories, products, and customer groups contribute to performance.
+The dashboard's purpose is to make retail performance easier to explore in one place. Depending on the dashboard version and available data, its views may cover:
 
-These views help teams spot changes, compare segments, and decide what to investigate. They do not by themselves prove why a change happened.
+- Sales and revenue trends
+- Profitability indicators
+- Order status and returned/cancelled orders
+- Average order value (AOV)
+- Product and category performance
+- Customer segments
+- Regional performance
+- Sales channels and payment methods
 
-## Dashboard sections
+These are analysis views, not proof of the causes behind a business change. Investigate source records and business context before making decisions.
 
-### 1. Executive Overview — Pulse
-A high-level view for checking key performance indicators, revenue trends, geographic performance, and channel/payment comparisons.
+## Dashboard areas
 
-### 2. Product & Customer Insights — Microscope
-A deeper view for exploring category profitability, customer mix, product rankings, and payment/order-status patterns.
+### Executive Overview — Pulse
+A high-level view intended to summarize important performance indicators and compare trends or segments.
 
-The exact values, chart availability, filters, and interactions depend on the version of index.html and the data embedded or connected to it.
+### Product & Customer Insights — Microscope
+A deeper exploration area intended to examine product/category results, customer mix, and order/payment patterns.
 
-## Design and accessibility
+The exact visuals, labels, filters, interactions, formulas, and figures are determined by the current HTML file. Check the dashboard itself and its source code before relying on a particular metric.
 
-- **Style:** glassmorphism panels on a deep navy/charcoal background.
-- **Accent colors:** cyan for sales, green for profit, violet for costs, and rose for alerts.
-- **Typography:** sans-serif text.
-- **Charts:** interactive chart elements may show more detail on hover or selection.
-- **Layout:** designed to adapt to common desktop and smaller screens.
+## Key metric definitions
 
-## Understanding the key metrics
+The following are common interpretations; the actual formula implemented in this project should be checked before reporting results.
 
-| Metric | Plain-English meaning |
+| Metric | General meaning |
 |---|---|
-| Gross Sales | Total sales value before excluding returned or cancelled orders. |
-| Net Sales | Sales counted for delivered orders under the project's stated rule. |
-| Net Profit | Profit calculated using the project's available sales and cost logic. Confirm the exact formula before reporting it. |
-| Order Leakage % | Returned and cancelled orders divided by all orders. |
-| Average Order Value (AOV) | Net sales divided by the number of delivered orders. |
+| Gross Sales | Sales value before any exclusions defined by the business. |
+| Net Sales | Sales after applying the project's chosen exclusions or adjustments. |
+| Net Profit | Sales minus the costs included in the calculation; this is not necessarily full accounting profit. |
+| Order Leakage % | A defined share of orders that do not reach the desired completed state, such as returned or cancelled orders. Confirm the denominator and statuses used. |
+| Average Order Value (AOV) | Sales value divided by the order count selected by the metric definition. |
 
-Metric definitions are only as reliable as the underlying data and implementation. Check the dashboard code or Power BI measures before using numbers for business decisions.
+**Metric validation checklist**
+1. Identify the data source and refresh date.
+2. Confirm currency, date range, and whether amounts include tax, discounts, shipping, or returns.
+3. Confirm which order statuses are included in each measure.
+4. Reconcile totals with source records or trusted reports.
+5. Document the exact formula before presenting figures.
 
-## Data and limitations
+## Technology and design
 
-The dashboard interface does not guarantee that a live retail database is connected. Check the repository's data folder and the dashboard's data-loading code to confirm which files are present and used. Embedded sample data is illustrative, not a verified current business result.
+- Static HTML entry point for GitHub Pages.
+- Dark, glassmorphism-inspired visual design with translucent panels and accent colors.
+- Intended to be viewed in a modern desktop or mobile browser.
+- GitHub Actions workflow deploys the repository contents to GitHub Pages when changes are pushed to `main`, or when manually triggered.
 
-Do not use demo numbers for accounting, tax, inventory purchasing, or other important decisions without validating them against original records.
-
-## Run it locally
-
-1. Download or clone this repository.
-2. Open index.html in a modern browser.
-3. To publish changes, commit them to the main branch. The GitHub Actions workflow in .github/workflows/deploy.yml publishes the site through GitHub Pages.
-
-A self-contained static HTML dashboard does not need a backend server. Any external assets or data files it depends on must also be available.
-
-## Power BI resources
-
-The powerbi/ folder contains supporting Power BI materials such as a theme, DAX measure notes, and an embed template. These are separate from the website. The embed template needs a real Power BI report embed URL; it is not itself a hosted Power BI report.
+The dashboard is hosted as a static site. No live database connection is confirmed by the repository structure alone; inspect the HTML and any data-loading code to establish whether values are embedded, sample values, or loaded from another source.
 
 ## Repository structure
 
-- index.html — website entry point served by GitHub Pages.
-- .github/workflows/deploy.yml — automatic GitHub Pages deployment workflow.
-- powerbi/ — Power BI theme, measure notes, and related starter resources.
-- data/ — retail data files, if present in this repository.
+```text
+.
+├── index.html
+├── Retail-Glassmorphism-Command-Center (1).html
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+└── powerbi/
+    ├── DAX_Measures.txt
+    ├── GlassmorphismTheme.json
+    ├── README.md
+    └── embed-template.html
+```
 
-## AI and project transparency
+- **`index.html`** — site entry point that redirects visitors to the dashboard HTML file.
+- **`Retail-Glassmorphism-Command-Center (1).html`** — main dashboard page.
+- **`.github/workflows/deploy.yml`** — GitHub Actions workflow for publishing the static site.
+- **`powerbi/`** — Power BI theme and starter documentation/resources.
+- **Data files** — no dedicated top-level `data/` directory is currently listed in the repository. Do not assume external or live retail data is connected without checking the dashboard implementation.
 
-This project is an analytics demonstration. AI-assisted code or documentation should be reviewed and tested by a person. Verify formulas, source data, and chart behavior before presenting results as business facts.
+## Run locally
+
+1. Open the repository and select **Code → Download ZIP**, or clone it:
+   ```bash
+   git clone https://github.com/ganesh9193singh-sketch/Retail-Glassmorphism-Dashboard.git
+   ```
+2. Open `index.html` in a modern browser. If the redirect does not work in your local file viewer, open `Retail-Glassmorphism-Command-Center (1).html` directly.
+3. To publish a change, commit it to the `main` branch.
+4. Open the **Actions** tab and confirm that the **Deploy static dashboard to GitHub Pages** workflow succeeds.
+
+Because the page is static, it does not require a backend server unless you add features that depend on one. Any external assets or data sources used by the page must still be reachable.
+
+## Power BI resources
+
+The `powerbi/` directory contains supporting starter resources:
+
+- `GlassmorphismTheme.json` — a theme file for Power BI.
+- `DAX_Measures.txt` — example/working notes for DAX measures; verify the formulas against your model.
+- `embed-template.html` — a template that requires a valid Power BI report embed URL and appropriate sharing/access settings.
+- `README.md` — instructions for the Power BI resources.
+
+These files do not, by themselves, mean a published Power BI report is embedded or connected to the live website.
+
+## Limitations and responsible use
+
+- Demo or embedded values may not represent current real-world sales.
+- Formulas can differ from standard business definitions; validate them in the code or Power BI model.
+- No guarantee is made that a live retail database, automatic refresh, authentication, or a production backend is configured.
+- Do not use unverified dashboard values for accounting, tax, inventory purchasing, or other high-impact business decisions.
+- Review and test changes before presenting the project as production-ready.
+
+## Contributing / improving the project
+
+For a useful improvement, include:
+- A clear description of the change.
+- Screenshots for significant visual changes.
+- The data source and formula definitions for new metrics.
+- Testing notes, including browser/device and whether the Pages deployment succeeded.
 
 ---
-Built as a retail analytics learning project with a glassmorphism command-center design.
+
+Created as a retail analytics learning project focused on a glassmorphism command-center interface.
