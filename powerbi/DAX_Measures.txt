@@ -1,0 +1,61 @@
+// Import the three CSVs, then create relationships:
+// Customers[CustomerID] 1:* Orders[CustomerID]
+// Products[ProductID] 1:* Orders[ProductID]
+
+// Core measures (create in Orders table)
+Gross Sales = SUM(Orders[SalesINR])
+Gross Profit = SUM(Orders[ProfitINR])
+Is Delivered = IF(Orders[OrderStatus] = "Delivered", 1, 0)
+
+Net Sales =
+CALCULATE(
+    SUM(Orders[SalesINR]),
+    Orders[OrderStatus] = "Delivered"
+)
+
+Net Profit =
+CALCULATE(
+    SUM(Orders[ProfitINR]),
+    Orders[OrderStatus] = "Delivered"
+)
+
+Total Orders = COUNTROWS(Orders)
+Delivered Orders =
+CALCULATE(COUNTROWS(Orders), Orders[OrderStatus] = "Delivered")
+
+Order Leakage % =
+DIVIDE(
+    CALCULATE(
+        COUNTROWS(Orders),
+        Orders[OrderStatus] IN {"Returned", "Cancelled"}
+    ),
+    COUNTROWS(Orders)
+)
+
+Avg Order Value (AOV) = DIVIDE([Net Sales], [Delivered Orders])
+Profit Margin % = DIVIDE([Net Profit], [Net Sales])
+
+// Time intelligence: create a Date table and relate it to Orders[OrderDate].
+Net Sales MoM % =
+VAR Curr = [Net Sales]
+VAR Prev = CALCULATE([Net Sales], DATEADD('Date'[Date], -1, MONTH))
+RETURN DIVIDE(Curr - Prev, Prev)
+
+Net Profit MoM % =
+VAR Curr = [Net Profit]
+VAR Prev = CALCULATE([Net Profit], DATEADD('Date'[Date], -1, MONTH))
+RETURN DIVIDE(Curr - Prev, Prev)
+
+Date Table = CALENDARAUTO()
+// Suggested calculated columns: Year = YEAR([Date])
+// Quarter = "Q" & FORMAT([Date], "Q YYYY")
+// MonthYear = FORMAT([Date], "MMM YY")
+
+Dynamic Title =
+IF(
+    HASONEVALUE(Customers[Region]),
+    SELECTEDVALUE(Customers[Region]) & " Region Sales Pulse",
+    "National Sales Pulse"
+)
+
+Leakage Flag = IF([Order Leakage %] > 0.10, "High", "OK")
