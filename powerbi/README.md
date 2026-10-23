@@ -2,6 +2,14 @@
 
 This folder contains starter files to help you build a report in Microsoft Power BI. It does **not** contain a finished Power BI report yet.
 
+## Start here
+
+- **[Open the separate HTML dashboard demo](https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/)**
+- **[View the dashboard's HTML source code](../index.html)**
+- **[Open the Power BI embed HTML template](./embed-template.html)**
+
+The HTML dashboard is a working-style web demo. It is not itself a Power BI report, and an HTML link cannot automatically turn into a Power BI report.
+
 ## Files in this folder
 
 ### `GlassmorphismTheme.json`
@@ -32,18 +40,21 @@ A typical version of this project needs three tables:
 
 Connect the tables using the matching IDs. The CSV files are not currently included in this repository, so you will need to add the correct source data before building the full report.
 
+## How to make a real Power BI report link
+
+1. Open Power BI Desktop and import your data.
+2. Apply the theme and create charts and measures.
+3. Save the report as a `.pbix` file.
+4. Publish it to Power BI Service, if your account supports publishing.
+5. Use the report's supported sharing/embed option and check access permissions.
+6. If you want to display it inside a webpage, copy the authorized embed URL into `embed-template.html`, replacing `REPLACE_WITH_YOUR_POWER_BI_EMBED_URL`.
+
+**Important:** This repository does not currently contain a finished `.pbix` report or a real Power BI Service report link. The template cannot show a Power BI report until you publish one and insert its real embed URL. Avoid public embedding for private or sensitive data.
+
 ## HTML dashboard versus Power BI
 
-The website preview is a separate HTML dashboard:
-[View the HTML dashboard](https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/)
+- **HTML dashboard demo:** [Open the web dashboard](https://ganesh9193singh-sketch.github.io/Retail-Glassmorphism-Dashboard/)
+- **HTML code:** [Open `index.html`](../index.html)
+- **Power BI embed template:** [Open `embed-template.html`](./embed-template.html)
 
-Its source code is here:
-[Open index.html](../index.html)
-
-Power BI Desktop creates a separate report file with the `.pbix` extension. To share a live Power BI report, you must create the report, publish it to Power BI Service, and use an authorized sharing link. A normal HTML URL cannot automatically become a Power BI report.
-
-## Before sharing
-- Validate the data and formulas.
-- Remove confidential information.
-- Check the report's sharing permissions.
-- Remember that publishing to Power BI Service may depend on your account, organization settings, and licensing.
+These are two separate outputs. The website can be published using GitHub Pages. A Power BI report must be created and published separately in Power BI.
